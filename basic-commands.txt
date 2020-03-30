@@ -1,0 +1,7 @@
+UBUNTU. CLI (Command Line Interface).
+
+pwd 	 : Print Working Directory. It self will print the current directory you are working in.
+ls 	 : List everything in the current directory. With colors :)
+cd	 : Change directory. 
+Home	 : cd ~/ 
+

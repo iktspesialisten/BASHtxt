@@ -1,0 +1,195 @@
+Some words from the sysadmin at starflight1:
+
+-ABOUT-
+Text format: Commands are enclosed in brackets []. Syntaxes and parameters of theese commands are just separated
+by a space inside the brackets. Information about the commands or usage are directly below in text.  
+Next command are separated by two blank lines.
+
+-Some information about BASH-
+BASH is a BIG part of the System.
+vi is a text editor that exist on every system - genious! x
+Remember all bash scripts starts with #!/bin/bash
+BASH is short for the Bourne-Again SHell.
+There are stuff you can do that can damage the system.
+
+The ~ at the prompt is your home user directory $ at the prompt means you are logged in 
+as a standard user. You cannot use administrator commands unless you give priviledges to it.
+
+Basic Linux File System:
+/	root	: Base file system.
+/	home	: The home folder of the user logged in.
+
+Folders are called now the path on where you are on the system.
+pwd command will print out thecurrent working directory.
+ 
+
+
+-COMMANDS-
+Commands usually have parameters. 
+[ls]  : 	List stuff. 
+[ls]  :	-a parameter show everything. -a stands for all. 
+[ls]  :	-la gives everything in the directory.
+[pwd] :	command will print out the current working directory
+[cd]  : Change Direcory. TAB key will do autocompletion. TAB twice will list what can be completed.
+	cd .. go up one level in folder
+	cd with no arguments takes you to your home folder.
+
+
+More about the cd command:
+Another use of cd.
+
+[pushd] /etc 	: Show we have moved from /etc to where you was.
+[popd]		: Goes back to where you was.
+
+
+What are we working with when we use ls.
+[ls -a] 	: Linux doesn't really need file extentions.
+		show . that is hidden files.
+		for example .bashrc.
+
+
+[file .bashrc] (show what kind of file it is)
+[file .ssr]    (show that it is a directory)
+
+
+Finding files: (edit such and such file)...
+[locate [filename]] ecample : locate fstab (uses a database from filesystem).
+Changes are that locate will not work without a database file.
+To make locate usefull: [sudo updatedb].
+
+[which] 	: Find commands installed. For example which cal. 
+		cal is a nice little terminal calendar.
+
+
+BASH keeps track of every command you give to the system.
+you can use the up arrow.
+
+
+[history]	: Now it will list everything you typed in! Commands are numbered.
+
+-HELP- available: 
+[whatis] : whatis cal. Short explanation.
+if you want to do something to a system but don't know what command to use, like something with time:
+[apropos time]	: Very usefull. Find everything related to the parameter or input whatever you call it.
+[man command]	: Manual pages. For example man man. man is your friend! man pages :) RTFM like we used to.
+
+
+-WORKING WITH FILES AND DIRECTORIES DIRECTLY -
+[mkdir] Junk1 Junk2 Junk3 : Makes three directories 
+[touch] 1. touch and then a filename that exists will update the date of the file.
+	2. touch [filenames] will create a new file(s)
+
+Another command usefull is copy. If you need to edit a file but you want to keep a copy
+then write 
+[cp] file1 file1.bak
+[cp] ~/.bashrc bashrc
+[mv] two functions. Move a file to another path. Or just change the name of a file.
+[rm] after you remove file, they dissapear so you cannot retreive it back after deletion. 
+	Be carefull!
+Some examples:
+[rm] file2	: Removes a file.
+[rm] * 		: Removes all files in directory.
+[rm -r]		: This removes all directories, files and direcories within the directory.
+rmdir 		: This removes a directory if nothing is in it.
+
+
+
+
+-MANAGING FILES (Perticulary text files).
+All settings or most of them is in text files. Even frontend GUI stuff.
+
+[cat file.txt]		: Prints everything in the file.txt to the screen.
+cat >> file1.txt 	: Whatever you cat will go into file1.txt. You get a blinking cursor and can type in text.
+			  after you are done typing press ctrl+D and you are done :) Now try [cat file1]
+cat is short for concatination.
+[cat file1 file2] 	: sticks every text in file1 into file2
+
+
+[more file1]		: Pages through files using space bar.
+			type q and it returns you to the terminal. 
+			basically it is a pager.
+
+[less file1]		: Less is more than more, you can use the arrow keys up and down and search for stuff in 				the file.
+			q is for quit in less too.
+
+-TEXT EDITING FILES-
+[nano]			: This is a file editor available on most systems.
+[nano file1]		: Edit the file1 with nano text editor.
+
+			ctrl+X exits the program.
+
+-CONCEPT REDIRECTION-
+append text with [cat >> file1] put in some more text 
+if you do [cat > file1] you remove everything in the file and just put the stuff cat in there.
+
+PIPING:
+taking the output from one command and to the input of another...
+
+[history | less] 	: Takes the output of the command and put into the less program.
+[ls -al / > lsot.txt]   : Takes the ls output of / into the textfile lsout.txt
+
+
+
+
+
+- WORKING WITH USERS -
+[sudo] 			: allow you to do something with another user.
+			substitute user do. 
+[sudo updatedb]
+You can make sudo stick around, you can become the root user. 
+The prefered method to become the root user for a while is to type sudo -s
+Now you will see the $ on your prompt changes to #.
+To get out of this mode, just type exit.
+You can make mistakes here that can mess up your system!
+
+[su]			: Changes you to another user.
+[su - Siggy]		: I want to become Siggy, load all her settings and jump to her home dir.
+			You will be asked for her password.
+			To go back type exit
+be carefull using the [su] command. 
+[users]			: Tell all users logged into the system. Even from remote shells perhaps :)
+[id]			: Gives information about your account. Alot of information. Show the lines 
+			in /etc/passwords 
+
+(RESEARCH HOW TO MAKE USERS, GROUPS AND ADDING USERS TO GROUPS).
+FILE PERMISSIONS:
+-rw-r--r-- 		: Every file is owned by someone and others have specific rights to them.
+			after this ls -al will print two names, the owner and the group owner.
+
+Linux permissions made easy:
+x: Execute. r: Read. w: Write.
+the first  --- are user permissions.
+The second --- are Group permissions. 
+The last   --- is everyones permissions.
+
+setting the permissions:
+setting the bits for user: 
+
+say we have a file1 and want to turn it to a program, like a bash script.
+There are two ways to do this.
+[chmod +x file1] 	: A simple way to make the file executable for everybody.
+the symbolic syntax is very hard to do. It is easier to use numbers. Take the bits and change them.
+Example 1: chmod 700 	: Makes the file rwx for YOU only.
+Example 2: chmod 744	: Make all permissions for me and read for everyone.
+Example 3: chmod 644	: Makes a file -rw-rw-r
+Most of the time you will be working with [chmod] and theese number
+
+Directories works very diffent when it comes to priviledges.
+The execute bit must be set for other people to see that directory.
+If you dont set the read bit they cannot see it.
+If you doens't set the write bit they will not even see it.
+
+
+- BASIC WAY TO PROCESSES -
+CTRL+C usually exit any thing running in prompt.
+[watch free] 		: Looking at memory.
+to kill this process just press CTRL+C.
+
+[killall firefox]	: Kill all firefox processes. If you own the process :)
+which google 
+which google-chrome 	: If this hangs and you want to kill it. Just [killall google-chrome] if it locks up.
+
+How to get out of a BASH session when you are done workingh: [exit], CTRL+D, logout. 
+Some more usefull stuff to do in a terminal is CTRL+C or CTRL+D redraw the screen.
+You can also change the size of the fonts in a terminal CTRL+SHIFT and the + or - for larger and smaller characters.
+

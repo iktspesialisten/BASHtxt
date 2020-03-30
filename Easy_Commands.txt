@@ -1,0 +1,57 @@
+ls 				: List stuff.
+ls -a 				: list all stuff about stuff.
+pwd  				: print working directory
+pushd and popd 			: pushes and pulls the current directory
+file .filename 			: show what kind of file this is.
+locate filename			: Searches the system for the file. database needs to be enabled:
+sudo updatedb
+which				: Finds commands installed. Example which cal
+history				: Show all previous commands issued.
+whatis app			: Short display of what an app is
+man app				: Manual for applications etc.
+apropos time			: If you don't know the whole name of an app this searches through all that include.
+touch				: Makes a file or if the file exists it will update the date and time 
+rm				: Removes a file
+rm -r				: Removes a directory with all files and directories in it.
+cat:
+cat file1.txt file2.txt		: Concatinate everything in file1.txt into file2.txt
+cat >> file1.txt		: You get a blinking cursor. Everything you type goes into this file.
+cat > file1.txt			: Removes everything allready in file1.txt and replaces it.
+more file1.txt			: Just stops when the page is full so you can read through the whole text.
+less file1.txt			: Less is more! Now you can use the arrow keys up and down and even search text.
+text editors			: nano and vi are basic on most systems.
+
+piping examples:
+history | less
+ls -al / > contentofroot	: Takes everything (-al) and put into textfile contentofroot
+sudo				: Allow you to work as another user.
+users				: Show all logged in users
+id				: Gives information about your account.
+
+File permissions:
+-------
+r: read
+w: write
+x: execute
+
+First 3 bits are user.
+Next 3 bits are group.
+Three last bits are everyone.
+
+chmod modifies the permissions.
+hard to use the correct syntaxes but +x are executables.
+Example 1: chmod 700    : Makes the file rwx for YOU only.
+Example 2: chmod 744    : Make all permissions for me and read for everyone.
+Example 3: chmod 644    : Makes a file -rw-rw-r
+
+Directories are a bit harder to get. 
+The execute bit must be set for other people to see that directory.
+If you dont set the read bit they cannot see it.
+If you doens't set the write bit they will not even see it.
+
+Getting out of processes and bash:
+CTRL+C usually end anything running in the prompt.
+killall [name of application]
+
+How to get out of BASH: exit, logout or CTRL+D
+ 

@@ -1,0 +1,5 @@
+Linux is not UNIX. (created by a bunch of atnt employees in 1969)
+Made by Linus Thorvalds who created everything and released it in 1991.
+90% of the fastest computers run on some form of linux.
+It's a ROCK SOLID SYSTEM.
+
